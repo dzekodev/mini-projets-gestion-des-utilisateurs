@@ -33,26 +33,31 @@ function SearchCmp(){
             </Space>
             {
                 searchText.length!==0 ?(
+                    
                     <table>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Image</th>
-                        <th>Couleur</th>
-                        <th>age</th>
-                        <th>Metiere</th>
-                    </tr>
-                    {
-                        <tr key={obj.nom}>
-                        <td>{obj.nom}</td>
-                        <td>{obj.prenom}</td>
-                        <td>{obj.image}</td>
-                        <td> {obj.couleur}</td>
-                        <td>{obj.age}</td>
-                        <td>{obj.metier}</td>
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Image</th>
+                            <th>Couleur</th>
+                            <th>age</th>
+                            <th>Metiere</th>
                         </tr>
-                    }
-                </table>
+                        </thead>
+                        <tbody>
+                            {
+                                <tr key={obj.nom}>
+                                <td>{obj.nom}</td>
+                                <td>{obj.prenom}</td>
+                                <td>{obj.image}</td>
+                                <td> {obj.couleur}</td>
+                                <td>{obj.age}</td>
+                                <td>{obj.metier}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 ) :
             <div>there is no data entered</div>
 
@@ -62,3 +67,5 @@ function SearchCmp(){
     )
 }
 export default SearchCmp
+
+

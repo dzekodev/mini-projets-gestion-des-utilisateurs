@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/src/components/Crud.js
 /.pnp
 .pnp.js
 

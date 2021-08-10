@@ -1,44 +1,62 @@
-import React, { useState } from 'react';
-import { Table, Radio, Divider } from 'antd';
-import {columns} from '../data/Columns'
- // rowSelection object indicates the need for row selection
+import { Table,Button } from 'antd';
+import { useState } from 'react';
+import { UsersData } from '../data/UsersData'
 
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
-    // Column configuration not to be checked
-    name: record.name,
-  }),
-};
 
-const Demo = ({usersData}) => {
-  const [selectionType, setSelectionType] = useState('checkbox');
-  return (
-    <div>
-      <Radio.Group
-        onChange={({ target: { value } }) => {
-          setSelectionType(value);
-        }}
-        value={selectionType}
-      >
-        <Radio value="checkbox">Checkbox</Radio>
-        <Radio value="radio">radio</Radio>
-      </Radio.Group>
-
-      <Divider />
-
-      <Table
-        rowSelection={{
-          type: selectionType,
-          ...rowSelection,
-        }}
-        columns={columns}
-        dataSource={[usersData]}
-      />
-    </div>
-  );
-};
-export default Demo
+function Tablee({setUsersData,usersData,cookies,setCookies}){
+  const columns = [
+    {
+      title: 'Nom',
+      dataIndex: 'nom',
+    },
+    {
+      title: 'Prenom',
+      dataIndex: 'prenom',
+    },
+    {
+      title: 'Image',
+      dataIndex: 'image',
+    },
+    {
+      title: 'Couleur',
+      dataIndex: 'couleur',
+    },
+    {
+      title: 'Age',
+      dataIndex: 'age',
+    },
+    {
+      title: 'Metiere',
+      dataIndex: 'metier',
+    },
+    {
+      title: 'Munipilation',
+      dataIndex: 'munipilation',
+      render : btn => <><Button onClick={handleDelete} key={index}>Delete</Button></>
+    }
+  ];
+    function handleDelete (){
+        UsersData.splice(index,1);
+        console.log(UsersData)
+        setUsersData({UsersData})
+        setCookies("users",usersData)
+        console.log(cookies.users)
+    
+    }
+    const [index,SetIndex]= useState('0');
+    return(
+        <Table 
+          columns={columns} 
+          dataSource={UsersData} 
+          onRow={(record, rowIndex) => {
+            return {
+              onClick: event => {
+                SetIndex(rowIndex)
+                console.log(event)
+              }
+            }
+          }
+      } />
+    )
+}
+export default Tablee
