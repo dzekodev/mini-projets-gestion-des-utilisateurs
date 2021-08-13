@@ -1,0 +1,30 @@
+.container{
+    width: 500px;
+    margin-top: 20px;
+    display:flex;
+    flex-direction: column;
+}
+.container .input{
+    margin-top: 20px;
+}
+.container .input:nth-child(2){
+    margin-bottom: 15px;
+}
+.button,select{
+    margin-top: 20px;
+}
+
+.UploadImg{
+    width: 300px;
+    cursor: pointer;
+}
+table{
+    border: black 1px solid;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+td,th{
+    color: black;
+    border: black 1px solid;
+    width: 150px;
+}
